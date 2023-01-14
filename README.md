@@ -9,6 +9,7 @@
     - [데이터 학습](#데이터-학습)
     - [객체 검출](#객체-검출)
     - [컨베이어 연동](#컨베이어-연동)
+    - [실행](#실행)
 - 🎬[작동영상 및 작품사진](#작동영상-및-작품사진🎬)
 - ✨ [업데이트](#-업데이트)
 <br  />
@@ -49,11 +50,11 @@
 각도별 약 300장<br>
 <img src="https://user-images.githubusercontent.com/115714519/212478669-6718804e-4684-46bb-9574-42db09d5d0e4.png" width="300" height="200">
 
+
 #### - 데이터 라벨링
 > 1. [Roboflow](https://app.roboflow.com/ml0930)를 통해 **Good apple** 과 **damaged apple**로 라벨링 진행<br />
 >2. Flip과 Rotation으로 데이터 추가 확보<br>
 <img src="https://user-images.githubusercontent.com/115714519/212479027-8c9ac66e-cbc8-44b0-b08a-3203f51c19ea.png" width="300" height="150">
-
 
 
 #### - 데이터 학습
@@ -81,11 +82,13 @@ with open ('/content/valid.txt', 'w') as f:
 #412번째에서 오버피팅으로 인해 학습종료
 ```
 
+
 #### - 객체 검출
 >**Jetson Nano**에서 학습파일 다운로드<br>
-**OpenCV** 및 **Pytorch**설치<br>
+**OpenCV** 및 **Pytorch**설치 ([Jetson Nano 환경구현](https://whiteknight3672.tistory.com/category/Works/DeepLearning) 참고)<br>
 **Yolov5**실행<br>
 <img src="https://user-images.githubusercontent.com/115714519/212479929-afc7a034-fc30-4c87-b86a-1532aa164540.png" width="400" height="200" >
+
 
 #### - 컨베이어 연동
 >Jetson Nano의 **GPIO제어**를 통해 신호 입출력<br>
@@ -139,9 +142,16 @@ def backward():
 ```
 <br />
 
+#### 실행
+> 1.Jetson Nano 부팅<br>
+> 2.터미널 실행<br>
+> 3.cd yolov5 #yolov5 디렉터리로 이동<br>
+> 4.python detect2.py --weights C://hgjt/Desktop/yolov5/runs/train/yolov5_apple2/weights/best.pt --source 0 <br>
+#커스텀 학습파일인 best.pt로 detect2 파일 실행
+
+
 ## 작동영상 및 작품사진🎬
-<img src="https://user-images.githubusercontent.com/115714519/212467233-b179148f-90e5-4796-b640-1b7d8dbcb41a.jpg" width="150" height="150">
-<img src="https://user-images.githubusercontent.com/115714519/212467551-c8d501c5-fd0d-4868-bf3c-e0657a00d00f.jpg" width="150" height="150">
+<img src="https://user-images.githubusercontent.com/115714519/212467233-b179148f-90e5-4796-b640-1b7d8dbcb41a.jpg" width="150" height="150"><img src="https://user-images.githubusercontent.com/115714519/212467551-c8d501c5-fd0d-4868-bf3c-e0657a00d00f.jpg" width="150" height="150">
 <br >
 <img src="https://user-images.githubusercontent.com/115714519/212481914-cf289ab8-cd6c-42e7-ba01-4baac5d0c2ff.jpg" width="300" height="200">
 <br>
