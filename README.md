@@ -12,10 +12,8 @@
     - [실행](#실행)
 - 🎬[작동영상 및 작품사진](#작동영상-및-작품사진🎬)
 - ✨ [업데이트](#-업데이트)
-<br  />
 <br />
 <br />
-
 
 
 
@@ -151,15 +149,19 @@ def backward():
 
 
 ## 작동영상 및 작품사진🎬
-<img src="https://user-images.githubusercontent.com/115714519/212467233-b179148f-90e5-4796-b640-1b7d8dbcb41a.jpg" width="150" height="150"><img src="https://user-images.githubusercontent.com/115714519/212467551-c8d501c5-fd0d-4868-bf3c-e0657a00d00f.jpg" width="150" height="150">
+<img src="https://user-images.githubusercontent.com/115714519/212467233-b179148f-90e5-4796-b640-1b7d8dbcb41a.jpg" width="300" height="250"><img src="https://user-images.githubusercontent.com/115714519/212467551-c8d501c5-fd0d-4868-bf3c-e0657a00d00f.jpg" width="300" height="250">
 <br >
-<img src="https://user-images.githubusercontent.com/115714519/212481914-cf289ab8-cd6c-42e7-ba01-4baac5d0c2ff.jpg" width="300" height="200">
+<img src="https://user-images.githubusercontent.com/115714519/212481914-cf289ab8-cd6c-42e7-ba01-4baac5d0c2ff.jpg" width="500" height="450">
 <br>
-<img src="https://user-images.githubusercontent.com/115714519/212482057-359a9a3f-52ab-4285-9fe7-79e18bb9d658.jpg" width="300" height="200">
+<img src="https://user-images.githubusercontent.com/115714519/212482057-359a9a3f-52ab-4285-9fe7-79e18bb9d658.jpg" width="500" height="400">
 
 <br>
 
 [![선별 작동 영상](http://img.youtube.com/vi/JcInwGUPN_M/0.jpg)](https://www.youtube.com/watch?v=JcInwGUPN_M) <br>(↑클릭)
 <br />
 
+[![전체 시연 영상](http://img.youtube.com/vi/sf3JQJZGjis/0.jpg)](https://www.youtube.com/watch?v=sf3JQJZGjis)<br>(↑클릭)
+
 ## 업데이트✨
+
+작품 전체 시연 영상 링크 추가 (2023.01.15)
