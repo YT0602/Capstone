@@ -159,7 +159,7 @@ def backward():
 
 <br>
 
-[![선별 작동 영상](http://img.youtube.com/vi/JcInwGUPN_M/0.jpg)](https://www.youtube.com/watch?v=JcInwGUPN_M) 
+[![선별 작동 영상](http://img.youtube.com/vi/JcInwGUPN_M/0.jpg)](https://www.youtube.com/watch?v=JcInwGUPN_M) <br>(↑클릭)
 <br />
 
 ## 업데이트✨
