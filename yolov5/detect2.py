@@ -203,13 +203,13 @@ def run(
                         label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                         annotator.box_label(xyxy, label, color=colors(c, True))
                         accNum = float(f'{conf:.2f}')
-                        if names[c] == 'Good apple' and accNum > 0.30:
+                        if names[c] == 'damegd apple' and accNum > 0.30:
                             print(names[c] + ': ' + f'{conf:.2f}')
                             thread = threading.Thread(target=forward)
                             thread.start()
-                        elif names[c] == 'damaged apple' and accNum > 0.30:
+                            thread.join()
+                        elif names[c] == 'Good apple' and accNum > 0.30:
                             print(names[c] + ': ' + f'{conf:.2f}')
-                            time.sleep(1.5)
                             thread = threading.Thread(target=backward)
                             thread.start()
 
