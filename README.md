@@ -1,13 +1,15 @@
 ![waving](https://capsule-render.vercel.app/api?type=waving&color=FF6666&height=300&section=header&text=All-in-one%20Apple%20Box&fontcolor=FFFFCC&fontSize=70&animation=fadeIn&&fontAlignY=30&desc=Capstone%20Project&descAlignY=51&descAlign=80)
 ## 목차
-- 📝 [프로젝트 소개](#-프로젝트-소개)
-    - [배경 및 필요성](#-배경-및-필요성)
-- 🛠 [구현기능](#-구현기능)
+- 📝 [프로젝트 소개](#프로젝트-소개)
+    - [배경 및 필요성](#배경-및-필요성)
+- 🛠 [구현기능](#구현기능)
 - 🔍 [이미지 분석](#이미지-분석🔍)
     - [사과 이미지 수집](#사과-이미지-수집)
     - [데이터 라벨링](#데이터-라벨링)
     - [데이터 학습](#데이터-학습)
     - [객체 검출](#객체-검출)
+    - [컨베이어 연동](#컨베이어-연동)
+- 🎬[작동영상 및 작품사진](#작동영상-및-작품사진🎬)
 - ✨ [업데이트](#-업데이트)
 <br  />
 <br />
@@ -22,6 +24,8 @@
 - 사과는 전체 과수작물 중 생산량 1위
 - 농업 종사자 근골격계 질환 발생율 증가 추세
 - 선별 공정에서의 시간과 비용 소모 多
+<br />
+
 ## 구현기능🛠
 #### 1. 팔받침대
     - 30 - 60대의 어깨너비, 팔 길이 고려하여 사이즈 선정 후 모델링
@@ -34,6 +38,7 @@
     - 리모컨 기능
     - 작업자에 따라 높이 조절하여 허리부하 감소
     - 트럭 적재함으로 손쉽게 이동 가능
+<br />
 
 ## 이미지 분석🔍
 #### - 사과 이미지 수집
@@ -82,11 +87,69 @@ with open ('/content/valid.txt', 'w') as f:
 **Yolov5**실행<br>
 <img src="https://user-images.githubusercontent.com/115714519/212479929-afc7a034-fc30-4c87-b86a-1532aa164540.png" width="400" height="200" >
 
+#### - 컨베이어 연동
+>Jetson Nano의 **GPIO제어**를 통해 신호 입출력<br>
+객체가 **Good apple**이고 정확도 0.3 이상일 경우 **정방향** 제어<br>
+**damaged apple**이고 정확도 0.3 이상일 경우 **역방향** 제어
+<img src="https://user-images.githubusercontent.com/115714519/212481426-f20dfbd3-2846-41a9-860f-df384e1ddbdc.png">
 
-## 작동영상 및 작품사진
+```
+
+# set pin numbers to the board's
+ENA = 33
+IN1 = 35
+IN2 = 37
+GPIO.setmode(GPIO.BOARD)
+
+# initialize EnA, In1 and In2
+GPIO.setup(ENA, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(IN1, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(IN2, GPIO.OUT, initial=GPIO.LOW)
+
+#컨베이어 제어 함수
+def forward():
+    time.sleep(3.5)
+    GPIO.output(ENA, GPIO.HIGH)
+    GPIO.output(IN1, GPIO.LOW)
+    GPIO.output(IN2, GPIO.HIGH)
+    time.sleep(7)
+    GPIO.output(IN1, GPIO.LOW)
+    GPIO.output(IN2, GPIO.LOW)
+
+def backward():
+    time.sleep(2)
+    GPIO.output(ENA, GPIO.HIGH)
+    GPIO.output(IN1, GPIO.HIGH)
+    GPIO.output(IN2, GPIO.LOW)
+    time.sleep(7)
+    GPIO.output(IN1, GPIO.LOW)
+    GPIO.output(IN2, GPIO.LOW)
+
+#검출객체별 스레드 실행 코드
+                        if names[c] == 'damegd apple' and accNum > 0.30:
+                            print(names[c] + ': ' + f'{conf:.2f}')
+                            thread = threading.Thread(target=forward)
+                            thread.start()
+                            thread.join()
+                        elif names[c] == 'Good apple' and accNum > 0.30:
+                            print(names[c] + ': ' + f'{conf:.2f}')
+                            thread = threading.Thread(target=backward)
+                            thread.start()
+
+```
+<br />
+
+## 작동영상 및 작품사진🎬
 <img src="https://user-images.githubusercontent.com/115714519/212467233-b179148f-90e5-4796-b640-1b7d8dbcb41a.jpg" width="150" height="150">
-<img src="https://user-images.githubusercontent.com/115714519/212467551-c8d501c5-fd0d-4868-bf3c-e0657a00d00f.jpg" width="150" height="150><br>
+<img src="https://user-images.githubusercontent.com/115714519/212467551-c8d501c5-fd0d-4868-bf3c-e0657a00d00f.jpg" width="150" height="150">
+<br >
+<img src="https://user-images.githubusercontent.com/115714519/212481914-cf289ab8-cd6c-42e7-ba01-4baac5d0c2ff.jpg" width="300" height="200">
+<br>
+<img src="https://user-images.githubusercontent.com/115714519/212482057-359a9a3f-52ab-4285-9fe7-79e18bb9d658.jpg" width="300" height="200">
 
-<img src="https://user-images.githubusercontent.com/115714519/212480576-ea9b49d3-0034-4fcf-a5fe-9c6b357dba2e.jpg" width="150" height="150><br>
+<br>
 
-[작동 테스트](https://youtube.com/shorts/6YYxFU-VQL0?feature=share)
+[![선별 작동 영상](http://img.youtube.com/vi/JcInwGUPN_M/0.jpg)](https://www.youtube.com/watch?v=JcInwGUPN_M) 
+<br />
+
+## 업데이트✨
